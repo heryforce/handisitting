@@ -1,0 +1,30 @@
+<form action="" method="post">
+    <div class="row mb-3">
+        <div class="form-group">
+            <label class="form-label" for="bio">Votre biographie</label>
+            <textarea class="form-control" name="bio" id="bio" rows="3"><?php echo $_SESSION['bio'] ?></textarea>
+            <small id="bioHelp" class="form-text"><?php echo ($_SESSION['role'] == 'sitter') ? 'Si vous êtes nourrice, renseignez le type d\'habitation, le nombre d\'étages si vous habitez en appartement, etc' : 'Renseignez les particularités pour la garde de votre enfant : se déplace-t-il en fauteuil ? Se nourrit-il d\'une certaine façon ? etc'?></small
+          >
+        </div>
+        <div class="row mb-3">
+            <div class="form-group">
+                <label class="form-label" for="phone">Numéro de téléphone</label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder=<?php echo $_SESSION['phone'] ?>>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="form-group">
+                <label class="form-label" for="mail">Adresse mail</label>
+                <input type="text" class="form-control" name="mail" id="mail" placeholder=<?php echo $_SESSION['mail'] ?>>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" name="envoyer">Sauvegarder les changements</button>
+</form>
+<hr>
+
+<?php
+require_once('functions.php');
+if ($_SESSION['role'] == 'sitter')
+    degree_section($degs);
+?>

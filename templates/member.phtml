@@ -1,0 +1,16 @@
+<table class="table">
+    <tbody>
+    <tr>
+        <td class="col-2">
+        <img style="height: 100px;" class="img-thumbnail" alt="Photo de profil" src="profilePictures/<?=$res['profilePicture']?>">
+        </td>
+        <td class="col-8 text-center">
+            Profil de <?=$res['firstName'], ' ', $res['lastName']?><br>
+            <?=$res['bio']?>
+        </td>
+        <td>
+            <a href="msgs.php?id=<?=$res['id']?>" class="btn btn-primary">Envoyer un message !</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

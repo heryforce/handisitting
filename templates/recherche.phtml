@@ -1,0 +1,74 @@
+<h3>Recherche de profils</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <form action="" method="post">
+        <div class="row">
+          <div class="col mb-3">
+            <div class="form-group">
+              <label class="form-label" for="city">Recherchez un parent ou un sitter dans votre ville</label><br />
+              <input class="form-control" type="text" name="city" id="city" placeholder="Tapez votre ville" />
+              <div class="text-start" id="suggestion-box" style="cursor: pointer;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            Recherchez-vous...
+            <div class="form-check">
+              <label class="form-check-label" for="role">
+                <input class="form-check-input" type="radio" name="role" id="role" value="parent" checked />
+                Un parent ?
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="role">
+                <input class="form-check-input" type="radio" name="role" id="role" value="sitter" />
+                Un sitter ?
+              </label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" name="envoyer">
+          Rechercher
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <?php
+  if (!empty($arr)) { ?>
+    <table class="table">
+      <tbody>
+        <?php
+        foreach ($arr as $member) { ?>
+          <tr>
+            <td>
+              <img style="height: 100px;" class="img-thumbnail" src="profilePictures/<?= $member['profilePicture'] ?>">
+            </td>
+            <td>
+              <?= $member['firstName'] ?><br>
+              <?php
+              $bio = $member['bio'];
+              if (iconv_strlen($bio) > 50) {
+                $bio = substr($member['bio'], 0, 50);
+                $bio .= $bio . '...';
+              }
+              ?>
+              <?= $bio ?>
+            </td>
+            <td class="text-center">
+              <a href="member.php?id=<?= $member['id'] ?>" class="btn btn-primary btn-sm" role="button">Consulter son profil</a>
+            </td>
+          </tr>
+        <?php
+        }
+        ?>
+      </tbody>
+    </table>
+  <?php
+  }
+  ?>
+</div>
