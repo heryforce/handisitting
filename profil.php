@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/inc/header.php');
 
 if (empty($_SESSION))
-    header('Location: index.php');
+    header('Location: connexion.php');
 
 if (!empty($_SESSION['flash'])) {
     echo checkAndPrint($_SESSION['flash'], $_SESSION['flash_type']);

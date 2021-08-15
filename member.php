@@ -7,7 +7,7 @@ if(empty($_GET))
 if(empty($res = getMember($_GET['id'])))
     header('Location: index.php');
 
-if($_GET['id'] === $_SESSION['id'])
+if(isset($_SESSION['id']) && $_GET['id'] === $_SESSION['id'])
     header('location: profil.php');
 
 require_once(__DIR__ . '/templates/member.phtml');
