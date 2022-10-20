@@ -1,5 +1,10 @@
 <?php
-include('config.php');
+if(!file_exists('config.php'))
+{
+    echo "Add a 'config.php' file at the root and return your PDO config.";
+    die;
+}
+require_once('config.php');
 
 function dbconnect()
 {
